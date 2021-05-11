@@ -24,7 +24,7 @@ import org.kamiblue.client.KamiMod
 import org.kamiblue.client.gui.hudgui.elements.client.WaterMark
 import org.kamiblue.client.module.Category
 import org.kamiblue.client.module.Module
-import org.kamiblue.client.module.modules.misc.DiscordRPC
+
 import org.kamiblue.client.util.EntityUtils
 import org.kamiblue.client.util.color.ColorConverter
 import org.kamiblue.client.util.color.ColorHolder
@@ -91,7 +91,7 @@ internal object Capes : Module(
 
             updated = true
             WaterMark.visible = WaterMark.visible
-            DiscordRPC.setCustomIcons(capeType)
+            
             KamiMod.LOG.info("Capes loaded")
         } catch (e: Exception) {
             KamiMod.LOG.warn("Failed parsing capes", e)
