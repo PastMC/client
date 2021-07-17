@@ -3,7 +3,7 @@
 [![Discord Mine](https://img.shields.io/discord/573954110454366214?label=chat&logo=discord&logoColor=white)](https://discord.gg/KfpqwZB)
 
 ## 2021/04/21 This project is now archived indefinitely.
-g
+
 All pull requests, issues or any other activity on the repositories of all KAMI Blue organizations will be ignored completely.
 
 Finally this project is in the bin 🗑️
