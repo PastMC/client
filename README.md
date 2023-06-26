@@ -9,7 +9,7 @@ All pull requests, issues or any other activity on the repositories of all KAMI 
 Finally this project is in the bin 🗑️
 
 ## Contributing
-
+2 years old
 Please go to [kamiblue.org/contributing](https://kamiblue.org/contributing) for building instructions.
 
 ## Thank you
