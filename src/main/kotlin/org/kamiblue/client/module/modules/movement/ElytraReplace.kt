@@ -45,7 +45,7 @@ internal object ElytraReplace : Module(
 
             getElytraChestCount()
 
-            if (elytraCount == 0 && shouldSendFinalWarning) {
+            if (elytraCount == 0 && shouldSendFinalWarning == true) {
                 sendFinalElytra()
             }
 
@@ -269,7 +269,8 @@ private fun SafeClientEvent.log() {
         connection.networkManager.closeChannel(TextComponentString(""))
         mc.loadWorld(null as WorldClient?)
 
-        mc.displayGuiScreen(KamiGuiDisconnected(reasonText, screen, disableMode == DisableMode.ALWAYS || (disableMode == DisableMode.NOT_PLAYER && reason != PLAYER), LocalTime.now()))
+        mc.displayGuiScreen(KamiGuiDisconnected(reasonText, screen, true, LocalTime.now()))
+        
     }
 
     private fun getScreen() = if (mc.isIntegratedServerRunning) {
