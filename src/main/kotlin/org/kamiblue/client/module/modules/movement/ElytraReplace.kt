@@ -26,7 +26,8 @@ internal object ElytraReplace : Module(
     private val playSound = setting("Play Sound", false, { logToChat.value })
     private val logThreshold = setting("Warning Threshold", 2, 1..10, 1, { logToChat.value })
     private val threshold = setting("Damage Threshold", 7, 1..50, 1)
-
+    private val shouldLog = setting("Should Log",false)
+    
     private var elytraCount = 0
     private var chestPlateCount = 0
     private var shouldSendFinalWarning = true
@@ -40,7 +41,7 @@ internal object ElytraReplace : Module(
             getElytraChestCount()
 
             if (elytraCount == 0 && shouldSendFinalWarning) {
-                sendFinalElytraWarning()
+                sendFinalElytra()
             }
 
             if (player.onGround && autoChest.value) {
@@ -57,6 +58,9 @@ internal object ElytraReplace : Module(
                         sendEquipNotification()
                     }
                 }
+            }
+            when {
+                elytraCount == 0 && shouldLog -> log()
             }
         }
     }
@@ -252,6 +256,21 @@ internal object ElytraReplace : Module(
             mc.soundHandler.playSound(PositionedSoundRecord.getRecord(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 0.4f, 1.0f))
         }
     }
+private fun SafeClientEvent.log() {
+        val reasonText = arrayOf("last Elytra Broken!");
+        val screen = getScreen() // do this before disconnecting
 
+        mc.soundHandler.playSound(PositionedSoundRecord.getRecord(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.0f))
+        connection.networkManager.closeChannel(TextComponentString(""))
+        mc.loadWorld(null as WorldClient?)
+
+        mc.displayGuiScreen(KamiGuiDisconnected(reasonText, screen, disableMode == DisableMode.ALWAYS || (disableMode == DisableMode.NOT_PLAYER && reason != PLAYER), LocalTime.now()))
+    }
+
+    private fun getScreen() = if (mc.isIntegratedServerRunning) {
+        GuiMainMenu()
+    } else {
+        GuiMultiplayer(GuiMainMenu())
+    }
 
 }
