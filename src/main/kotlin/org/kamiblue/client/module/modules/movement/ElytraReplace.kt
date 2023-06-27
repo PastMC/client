@@ -1,6 +1,7 @@
 package org.kamiblue.client.module.modules.movement
 
 import net.minecraft.client.audio.PositionedSoundRecord
+import net.minecraft.client.multiplayer.WorldClient
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.init.Items
 import net.minecraft.client.gui.GuiMainMenu
@@ -10,6 +11,8 @@ import net.minecraft.inventory.ClickType
 import net.minecraft.item.ItemArmor
 import net.minecraft.item.ItemElytra
 import net.minecraft.item.ItemStack
+import org.kamiblue.client.event.SafeClientEvent
+import org.kamiblue.client.gui.mc.KamiGuiDisconnected
 import net.minecraftforge.fml.common.gameevent.TickEvent
 import org.kamiblue.client.module.Category
 import org.kamiblue.client.module.Module
