@@ -3,6 +3,8 @@ package org.kamiblue.client.module.modules.movement
 import net.minecraft.client.audio.PositionedSoundRecord
 import net.minecraft.client.gui.inventory.GuiContainer
 import net.minecraft.init.Items
+import net.minecraft.client.gui.GuiMainMenu
+import net.minecraft.client.gui.GuiMultiplayer
 import net.minecraft.init.SoundEvents
 import net.minecraft.inventory.ClickType
 import net.minecraft.item.ItemArmor
@@ -26,7 +28,7 @@ internal object ElytraReplace : Module(
     private val playSound = setting("Play Sound", false, { logToChat.value })
     private val logThreshold = setting("Warning Threshold", 2, 1..10, 1, { logToChat.value })
     private val threshold = setting("Damage Threshold", 7, 1..50, 1)
-    private val shouldLog = setting("Should Log",false)
+    private val shouldLog by setting("Should Log",false)
     
     private var elytraCount = 0
     private var chestPlateCount = 0
