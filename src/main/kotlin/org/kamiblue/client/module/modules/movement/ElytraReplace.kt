@@ -18,6 +18,8 @@ import org.kamiblue.client.module.Category
 import org.kamiblue.client.module.Module
 import org.kamiblue.client.util.text.MessageSendHelper
 import org.kamiblue.client.util.threads.safeListener
+import net.minecraft.util.text.TextComponentString
+import java.time.LocalTime
 
 internal object ElytraReplace : Module(
     name = "ElytraReplace",
@@ -46,7 +48,7 @@ internal object ElytraReplace : Module(
             getElytraChestCount()
 
             if (elytraCount == 0 && shouldSendFinalWarning == true) {
-                sendFinalElytra()
+                sendFinalElytraWarning()
             }
 
             if (player.onGround && autoChest.value) {
